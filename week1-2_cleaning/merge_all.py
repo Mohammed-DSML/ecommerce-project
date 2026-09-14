@@ -41,6 +41,9 @@ if __name__=='__main__':
 	master_table=merge_tables(master_table,df_products,'product_id','left','many_to_one')
 	master_table=merge_tables(master_table,df_payments,'order_id','left','many_to_many')
 
+	master_table=clean_orders.rem_dup(master_table,'order_id','order_item_id')
+
+
 	aggregate=aggregate_payments(master_table,'order_id','payment_value')
 
 	master_table=fill_missing_product_category(master_table,'product_category_name','unknow_category')

@@ -69,34 +69,7 @@ if __name__ =='__main__':
 
 
 
-'''with open('C:/Users/STS/Documents/ecommerce-project/data/olist_orders_dataset.csv') as f:
-    show=f.readline()
-print(show)
 
-print('wrong')
-print(new_drop['order_id'].duplicated(keep=False).any())
-
-for i in range(3):
-    try:
-        if i == 3:
-            raise ValueError("Oops")
-        print("Processing", i)
-    finally:
-        print("Cleanup for", i)
-        # continue here would be invalid
-
-try:
-    x = 10   # we use try...finally inside a loop (for or while)
-finally:
-    (ontinue)
-
-text = "hello"
-print(text.split(""))
-
-average = lambda nums: total = sum(nums) / len(nums)
-print(average([1, 2, 3]))
-
-'''
 
 
 
