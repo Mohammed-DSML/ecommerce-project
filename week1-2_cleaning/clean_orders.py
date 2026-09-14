@@ -1,6 +1,6 @@
 import pandas as pd
 from pathlib import Path
-print("Current directory:", Path.cwd())
+
 
 # 1-Loading dataset
 def load_orders(path):
@@ -42,7 +42,7 @@ def add_delv_day(d_f,delivered,order):
 
 
 # 5-Remove duplicates on order_id
-def rem_dup(d_f,coll):
+def rem_dup(d_f,*coll):
 	'''removing duplicates from a column'''
 	d_f=d_f.copy()
 	d_f=d_f.drop_duplicates(subset=coll)
@@ -66,7 +66,7 @@ if __name__ =='__main__':
 	print(f'saved{len(d_f)}clean orders')
 
 	
-print(d_f.head(10))
+
 
 
 '''with open('C:/Users/STS/Documents/ecommerce-project/data/olist_orders_dataset.csv') as f:
