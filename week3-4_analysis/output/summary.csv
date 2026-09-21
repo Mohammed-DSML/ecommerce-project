@@ -1,0 +1,21 @@
+1-for monthly_revenue trend the numbers tell this:
+Purchases exceeded 15,000 from March through August, with May reaching the highest peak at 1,747,900.97.
+Purchases ranged between 12,000 and 13,000 in January, February, and November. 
+In December, October, and September, purchases fell below 9,000, with September recording the lowest value at 732,454.23.
+
+2-for top 10 state by total revenue :
+Three states dominate the top 10 in terms of total revenue.
+São Paulo ranks first with 5,998,226.96, far ahead of Rio de Janeiro, which ranks second with 2,144,379.69. 
+Minas Gerais ranks third with 1,872,257.26. The remaining states in the top 10 have total revenues ranging from approximately 30,000 to 90,000.
+
+3- average delivery days by state:
+São Paulo had the lowest average delivery time, at only 8 days. 
+Nine states had an average delivery time exceeding 20 days, with Roraima (RR) taking almost 29 days.
+ Amapá (AP) and Amazonas (AM) both exceeded 26 days, while the remaining states had average delivery times ranging from 11 to 19 days.
+4- percentage of orders delivered late:
+Approximately 8% of delivered orders were delivered after the estimated delivery date,
+ meaning that about 1 in every 12 delivered orders experienced a delivery delay.
+5- payment type distribution 
+Credit cards were the most commonly used payment method, accounting for approximately 73% of payments.
+ Boleto was the second most common method at 19%, while voucher and debit card payments accounted for much smaller shares.
+
