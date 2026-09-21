@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 # 1-Loading dataset
-def load_orders(path):
+def load_data(path):
 	'''loading dataset'''
 	
 	d_f=pd.read_csv(path)
@@ -33,11 +33,11 @@ def drop_rows(d_f,col1,col2):
  
 	
 # 4-Create a delivery day columns
-def add_delv_day(d_f,delivered,order):
+def add_delv_day(d_f,delivered,order,label):
     '''we convert the data column to propre datatype,and we calculate delivery_days'''
     d_f=d_f.copy()
     d_f[delivered]=pd.to_datetime(d_f[delivered],errors='coerce')
-    d_f['delivery_days']=(d_f[delivered]-d_f[order]).dt.days
+    d_f[label]=(d_f[delivered]-d_f[order]).dt.days
     return d_f
 
 
@@ -51,13 +51,13 @@ def rem_dup(d_f,*coll):
         
 if __name__ =='__main__':
 
-	d_f=load_orders(Path('..')/'data'/'olist_orders_dataset.csv')
+	d_f=load_data(Path('..')/'data'/'olist_orders_dataset.csv')
 
 	d_f=conv_todatetime(d_f,'order_purchase_timestamp')
 
 	d_f=drop_rows(d_f,'order_delivered_customer_date','order_status')
 
-	d_f=add_delv_day(d_f,'order_delivered_customer_date','order_purchase_timestamp')
+	d_f=add_delv_day(d_f,'order_delivered_customer_date','order_purchase_timestamp','delivery_days')
 
 	d_f=rem_dup(d_f,'order_id')
 
