@@ -30,11 +30,11 @@ def fill_missing_product_category(data,col,imputation):
 
 if __name__=='__main__':
 	
-	df_items=clean_orders.load_data(Path('..')/'data'/'olist_order_items_dataset.csv')
-	df_products=clean_orders.load_data(Path('..')/'data'/'olist_products_dataset.csv')
-	df_payments=clean_orders.load_data(Path('..')/'data'/'olist_order_payments_dataset.csv')
-	df_customers=clean_orders.load_data(Path('..')/'data'/'olist_customers_dataset.csv')
-	df_orders=clean_orders.load_data(Path('..')/'data'/'olist_orders_dataset.csv')
+	df_items=clean_orders.load_data(Path('data')/'olist_order_items_dataset.csv')
+	df_products=clean_orders.load_data(Path('data')/'olist_products_dataset.csv')
+	df_payments=clean_orders.load_data(Path('data')/'olist_order_payments_dataset.csv')
+	df_customers=clean_orders.load_data(Path('data')/'olist_customers_dataset.csv')
+	df_orders=clean_orders.load_data(Path('data')/'olist_orders_dataset.csv')
 
 	master_table=merge_tables(df_orders,df_customers,'customer_id','inner','one_to_one')
 	master_table=merge_tables(master_table,df_items,'order_id','right','one_to_many')
@@ -47,7 +47,7 @@ if __name__=='__main__':
 	aggregate=aggregate_payments(master_table,'order_id','payment_value','total_payment')
 
 	master_table=fill_missing_product_category(master_table,'product_category_name','unknow_category')
-	master_table.to_csv(Path('..')/'data'/'master_table.csv',index=False)
+	master_table.to_csv(Path('data')/'master_table.csv',index=False)
 
 
 

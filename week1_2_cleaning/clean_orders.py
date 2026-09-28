@@ -51,7 +51,7 @@ def rem_dup(d_f,*coll):
         
 if __name__ =='__main__':
 
-	d_f=load_data(Path('..')/'data'/'olist_orders_dataset.csv')
+	d_f=load_data(Path('data')/'olist_orders_dataset.csv')
 
 	d_f=conv_todatetime(d_f,'order_purchase_timestamp')
 
@@ -61,7 +61,7 @@ if __name__ =='__main__':
 
 	d_f=rem_dup(d_f,'order_id')
 
-	d_f.to_csv(Path('..')/'data'/'clean_orders.csv',index=False)
+	d_f.to_csv(Path('data')/'clean_orders.csv',index=False)
 
 	print(f'saved{len(d_f)}clean orders')
 
