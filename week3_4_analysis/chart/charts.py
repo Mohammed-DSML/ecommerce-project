@@ -1,11 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sb
+import seaborn as sns
 from pathlib import Path
 from week1_2_cleaning import clean_orders
 
 if __name__=='__main__':
+
     # 1- load data that i need for my charts 
+    
     monthly_revenue = clean_orders.load_data(
         Path('data')/ 'monthly_revenue.csv'
         )
