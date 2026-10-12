@@ -69,10 +69,12 @@ if __name__=='__main__':
 	#print(average_delv_bystate.sort_values(by='average_delivery_daysbystate',ascending=False))
 
 	# 4 % of orders delivered late
+
 	''' first of all we have to determine whick columns we consider in this case ,we have 'order_delivered_customer_date'
 	and 'order_estimated_delivery_date' this last we must convert to datetime which let's make comparison
 	then we use .loc[] with right condition ,we calculate the sum of all delivered late and devides on total delivered 
 	we do all these by using the propriete data in this case is table_states'''
+	
 	table_states=clean_orders.conv_todatetime(table_states,'order_estimated_delivery_date')
 	#table_states.info()
 	delivered_estimated=filter_table(table_states,'order_delivered_customer_date','order_status')
