@@ -63,7 +63,7 @@ if __name__ =='__main__':
 
 	d_f.to_csv(Path('data')/'clean_orders.csv',index=False)
 
-	print(f'saved{len(d_f)}clean orders')
+	print(f'saved {len(d_f)}: clean orders')
 
 	
 
@@ -74,38 +74,4 @@ if __name__ =='__main__':
 
 
 
-if __name__=='__main__':
-    connection = None
-    cursor = None
-    try:
-        load_dotenv()
-        connection = mysql.connector.connect(
-            host=os.getenv("MYSQL_HOST"),
-            port=int(os.getenv("MYSQL_PORT", "3306")),
-            user=os.getenv("MYSQL_USER"),
-            password=os.getenv("MYSQL_PASSWORD"),
-            database=os.getenv("MYSQL_DATABASE")
-            )
-
-
-
-
- # 1- running total revenue by month
-        total_revenue_by_month=run_query(total_revenue_by_month)
-        print(total_revenue_by_month.head(10))
-
-        # 2- Rank customers by lifetime spend per state 
-        Rank_customers_lifetime_spend_per_state= run_query(Rank_customers_lifetime_spend_per_state)
-        print(Rank_customers_lifetime_spend_per_state)
-
-        # 3- 3-month rolling average
-        three_month_rolling_average=run_query(month_3rolling_avg)
-        print(three_month_rolling_average)
-
-
-    except mysql.connector.Error as err:
-        print(f'database error: {err}')
-
-
-        cursor.close()
-        connection.close()        
+  

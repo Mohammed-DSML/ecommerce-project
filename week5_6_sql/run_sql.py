@@ -36,7 +36,7 @@ if __name__=='__main__':
         using(order_id)
         where order_purchase_timestamp is not null ;
         """
-        Rank_customers_lifetime_spend_per_state="""
+        rank_customers_lifetime_spend_per_state="""
         select customer_id,customer_state,total,
         Rank() Over(
         partition by customer_state
@@ -76,8 +76,8 @@ if __name__=='__main__':
         print(revenue_by_month.head(10))
 
         # 2- Rank customers by lifetime spend per state 
-        Rankustomers_spend_per_state= run_query(cursor,Rank_customers_lifetime_spend_per_state)
-        print(Rankustomers_spend_per_state)
+        rank_customers_by_state= run_query(cursor,rank_customers_lifetime_spend_per_state)
+        print(rank_customers_by_state)
 
         # 3- 3-month rolling average
         month3_roll_avg=run_query(cursor,month_3rolling_avg)
