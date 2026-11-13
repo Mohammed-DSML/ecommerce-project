@@ -164,7 +164,7 @@ if __name__=='__main__':
 		'week7_8_model/test_order.csv',
 		index=False
 		)
-	'''
+	
 	# preprocessing pipeline
 	categorical_features =[
 	'customer_state',
@@ -231,7 +231,7 @@ if __name__=='__main__':
 
 	model_path=Path('week7_8_model')/'random_forest_model.joblib'
 	joblib.dump(rf_model ,model_path)
-	'''
+	
 
 
 
