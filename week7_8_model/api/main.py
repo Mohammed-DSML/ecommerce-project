@@ -38,7 +38,6 @@ def predict (request:DeliveryRequest):
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -65,5 +64,3 @@ def predict (request:DeliveryRequest):
 
 
 
-=======
->>>>>>> 287f149c2c129f1887aff2e859cd7f134b7af3c1
