@@ -19,6 +19,7 @@ if __name__=='__main__':
     cursor = None
     try:
         load_dotenv()
+        
         connection = mysql.connector.connect(
             host=os.getenv("MYSQL_HOST"),
             port=int(os.getenv("MYSQL_PORT", "3306")),
