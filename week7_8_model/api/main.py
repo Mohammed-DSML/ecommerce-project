@@ -40,27 +40,3 @@ def predict (request:DeliveryRequest):
 
 
 
-
-
-'''
-
-
-
-class DeliveryRequest(BaseModel):
-    distance: float = Field(gt=0)
-    product_weight: float = Field(ge=0)
-
-
-class PredictionResponse(BaseModel):
-    predicted_delivery_days: float
-
-
-@app.post("/predict", response_model=PredictionResponse)
-def predict(request: DeliveryRequest):
-    features = pd.DataFrame([request.model_dump()])
-
-    prediction = pipeline.predict(features)[0]
-
-    return {
-        "predicted_delivery_days": float(prediction)
-    }'''
