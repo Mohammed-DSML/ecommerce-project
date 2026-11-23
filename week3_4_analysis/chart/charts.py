@@ -12,7 +12,6 @@ if __name__=='__main__':
         Path('data')/ 'monthly_revenue.csv'
         )
     
-
     top_state=clean_orders.load_data(Path('data')/'top10_state_revenue.csv')
     print(top_state)
     delivery_days=clean_orders.load_data(Path('data')/'delivery_days.csv')
@@ -53,8 +52,8 @@ if __name__=='__main__':
 
     # 2- 3 Histogram of delivery days
     # draw histogram chart
-    delivery_days.info()
-    print(delivery_days['delivery_days'].describe())
+    # we must remove duplicated rows from the column order_id
+    delivery_days=delivery_days.drop_duplicates(subset='order_id')
     fig, ax=plt.subplots(figsize=(8,4))
     ax.hist(delivery_days['delivery_days'],bins=20,edgecolor='black')
     ax.set(title='Distribution of delivery days',
@@ -62,6 +61,7 @@ if __name__=='__main__':
         ylabel='Frequencies')
     fig.savefig(Path('week3_4_analysis')/'output'/'delivery_days_histogram.png',dpi=300)
     plt.show()
+    plt.close('all')
 
 
 

@@ -8,8 +8,10 @@ from pathlib import Path
 app=FastAPI()
 
 # create the FastAPI appication
-	
-pipeline=joblib.load(Path(__file__).resolve().parent.parent / "random_forest_model.joblib")
+try :
+	pipeline=joblib.load(Path(__file__).resolve().parent.parent / "random_forest_model.joblib")
+except FileNotFoundError:
+	raise RuntimeError("Model file not found. Run train.py first.")
 
 class DeliveryRequest(BaseModel):
 	customer_state:str
@@ -33,34 +35,6 @@ def predict (request:DeliveryRequest):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-
-
-	
-
-
-
-	
-
-	
-
-	
 
 
 

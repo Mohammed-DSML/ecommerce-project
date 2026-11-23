@@ -4,7 +4,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import pandas as pd
 
-# functin query
+# function query
 
 def run_query(cursor,query):
     '''exectue the query,bring the output to python ,display in tabular form dataframe'''
@@ -29,14 +29,28 @@ if __name__=='__main__':
             )
 
         cursor = connection.cursor()
-        monthly_revenue = """
-        select * ,
-        round(sum(payment_value) over(partition by month(order_purchase_timestamp),year(order_purchase_timestamp)),0) as total_revenue 
-        from olist_order_payments_dataset p 
-        left join  orders o
-        using(order_id)
-        where order_purchase_timestamp is not null ;
+        
+        monthly_revenue ="""
+        WITH monthly_summary AS (
+            SELECT
+            YEAR(order_purchase_timestamp) AS yr,
+            MONTH(order_purchase_timestamp) AS mn,
+            ROUND(SUM(payment_value), 0) AS monthly_revenue
+            FROM olist_order_payments_dataset p
+            LEFT JOIN orders o USING (order_id)
+            WHERE order_purchase_timestamp IS NOT NULL
+            GROUP BY yr, mn
+            )
+        SELECT
+        yr,
+        mn,
+        monthly_revenue,
+        SUM(monthly_revenue) OVER (ORDER BY yr, mn) AS running_total
+        FROM monthly_summary
+        ORDER BY yr, mn;
+
         """
+        
         rank_customers_lifetime_spend_per_state="""
         select customer_id,customer_state,total,
         Rank() Over(
@@ -74,7 +88,7 @@ if __name__=='__main__':
 
         # 1- running total revenue by month
         revenue_by_month=run_query(cursor,monthly_revenue)
-        print(revenue_by_month.head(10))
+        print(revenue_by_month)
 
         # 2- Rank customers by lifetime spend per state 
         rank_customers_by_state= run_query(cursor,rank_customers_lifetime_spend_per_state)
